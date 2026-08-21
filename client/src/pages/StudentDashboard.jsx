@@ -24,7 +24,7 @@ import {
   Compass
 } from 'lucide-react';
 
-export const StudentDashboard = () => {
+export const StudentDashboard = ({ onSwitchRole }) => {
   const [items, setItems] = useState([]);
   const [stats, setStats] = useState({ total: 0, lost: 0, found: 0, resolved: 0, open: 0 });
   const [loading, setLoading] = useState(true);
@@ -142,7 +142,12 @@ export const StudentDashboard = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#fafafa]">
       {/* Navbar */}
-      <Navbar onOpenPostModal={() => setIsPostModalOpen(true)} stats={stats} />
+      <Navbar 
+        onOpenPostModal={() => setIsPostModalOpen(true)} 
+        stats={stats} 
+        currentRole="student"
+        onSwitchRole={onSwitchRole}
+      />
 
       {/* Toast Notification Floating Banner */}
       {toast && (
